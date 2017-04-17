@@ -1,0 +1,57 @@
+/*=====================================================
+                All Post Contact Form 
+             - for usage of multilingual - 
+  　　　　　　　　　* allpost-contactform.js
+                 * allpost-contactform-language.php
+                 * rl-apcf-ANY-OTHER-LANGUAGE1.php
+                 * rl-apcf-ANY-OTHER-LANGUAGE2.php
+=====================================================*/
+
+(1) At "Settings" > "Contact Form" on your WordPress Admin Panel, on the green area, set empty without "E-mail Address to receive E-mails via this plugin ( If empty, this plugin will use your Admin E-mail Address )".
+
+(2) Open allpost-contactform.js, and add a new function for other languages to it. If you use the default function, "checkForm", for English language, the new function for Japanese language has to have a new name like this: "checkFormJa". French language: "checkFormFr". Arabic language: "checkFormAr".
+
+You CAN use "Subtag" as the name-of-language to add at the end of "checkForm" in the list of: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+(3) Set the function for your html form page(s) written in other language(s). Change the default function, "checkForm", to the new function for the language.
+
+(4) Open allpost-contactform-language.php packed together with this file.
+And changed "Modify this1"'s "ANY-OTHER-LANGUAGE1" to the other language. 
+You MUST use "Subtag" as the "ANY-OTHER-LANGUAGE1" in the list of: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry. If the language is "French", "ANY-OTHER-LANGUAGE1" is "fr".
+
+/************** Modify this1  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGE1/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGE1.php';            
+/************** Modify this1  End *************************************/
+
+If you'd like to adapt ↑ to "French", you must change ↑ to ↓ .
+
+/************** Modify this1  Start ***********************************/    
+        }elseif (preg_match('/^fr/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-fr.php';            
+/************** Modify this1  End *************************************/
+
+If you'd like to set up other language, use the part of "Modify this2".
+   
+/************** Modify this2  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGE2/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGE2.php';            
+/************** Modify this2  End *************************************/
+
+If you'd like to set up the other languages, use copy "Modify this2" and paste it under "Modify this2  End", and use them like this:
+
+/************** Modify this2  End *************************************/
+/************** Modify thisn  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGEn/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGEn.php';            
+/************** Modify thisn  End *************************************/
+
+(5) Rename rl-apcf-public-ANY-OTHER-LANGUAGE1.php. Change "ANY-OTHER-LANGUAGE1" to the same lang-name of (4). If "ANY-OTHER-LANGUAGE1" was changed to "French", the file name must be "rl-apcf-public-fr.php".
+And do rl-apcf-public-ANY-OTHER-LANGUAGE2.php in the same way. 
+If you'd like to set up the other languages, create copies of rl-apcf-public-ANY-OTHER-LANGUAGE1.php and use them.
+
+(6) Open (5) files and translate the right side of all lines.
+
+(7) Upload the files to /wp-content/plugins/allpost-contactform/ directory of your server.
+
+

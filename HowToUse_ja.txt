@@ -1,0 +1,65 @@
+/*=====================================================
+                All Post Contact Form 
+ 　　　　　　　 　　　　- 多言語利用 - 
+  　　　　　　　　　* allpost-contactform.js
+                 * allpost-contactform-language.php
+                 * rl-apcf-ANY-OTHER-LANGUAGE1.php
+                 * rl-apcf-ANY-OTHER-LANGUAGE2.php
+=====================================================*/
+
+
+（１）管理画面の「設定　＞　コンタクトフォーム」で、緑色の入力内容部分のうち、「コンタクトメールを受信するためのメールアドレス」以外の部分を空欄にしてください。
+
+（２）allpost-contactform.js（　入力チェック用ジャバスクリプト　）に、日本語用のチェック項目を付け加えます。初期設定の「checkForm」を英語に割り当てる場合、日本語は「checkFormJa」などはいかがでしょうか。フランス語は「checkFormFr」などはいかがでしょうか。アラビア語は「checkFormAr」などはいかがでしょうか。「checkForm」につける言語名は、
+
+http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+の「Subtag」の部分を推奨いたします（必須ではありません）。
+
+（３）htmlフォームページに、（２）で作成したファンクション名を書き加えます。
+
+（４）同梱の allpost-contactform-language.php を開いてください。そして、「Modify this1」の 「ANY-OTHER-LANGUAGE1」を他の言語に書き換えてください。「他の言語」は、
+
+http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+の「Subtag」の部分になります（必須です）。フランス語は、「fr」です。
+
+/************** Modify this1  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGE1/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGE1.php';            
+/************** Modify this1  End *************************************/
+
+をフランス語に対応させてみましょう。次のようになります：
+
+/************** Modify this1  Start ***********************************/    
+        }elseif (preg_match('/^fr/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-fr.php';            
+/************** Modify this1  End *************************************/
+
+さらに別の言語を設定するときは、「Modify this2」をご利用ください。
+   
+/************** Modify this2  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGE2/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGE2.php';            
+/************** Modify this2  End *************************************/
+
+さらに他の言語を多数設定することをご希望の場合は、「Modify this2」の部分をコピーして「Modify this2  End」の下に貼り付けてご利用ください。
+
+/************** Modify this2  End *************************************/
+/************** Modify thisn  Start ***********************************/    
+        }elseif (preg_match('/^ANY-OTHER-LANGUAGEn/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            include 'rl-apcf-public-ANY-OTHER-LANGUAGEn.php';            
+/************** Modify thisn  End *************************************/
+
+
+（５）rl-apcf-public-ANY-OTHER-LANGUAGE1.phpをリネームしてください。「ANY-OTHER-LANGUAGE1」の部分を（４）で設定した言語に変更します。「ANY-OTHER-LANGUAGE1」が「fr」の場合は、rl-apcf-public-fr.phpです。
+rl-apcf-public-ANY-OTHER-LANGUAGE2.phpも同様にご設定ください。
+さらに他の言語を多数設定することをご希望の場合は、rl-apcf-public-ANY-OTHER-LANGUAGE1.phpを必要なだけ複製してご利用ください。
+
+（６) （５）のファイル中の設定項目の右辺をすべて該当する言語に翻訳してください。
+
+（７）書きかえたファイルをサーバーの/wp-content/plugins/allpost-contactform/ディレクトリにアップロードしてください。
+
+
+
+
